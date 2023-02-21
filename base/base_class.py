@@ -15,25 +15,39 @@ class Base():
 
     def place_the_cursor_css(self, selectors_element):
         """Навести курсор на элемент CSS"""
-        hoverable = WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.CSS_SELECTOR, selectors_element)))
+        hoverable = WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, selectors_element)))
         ActionChains(self.driver).move_to_element(hoverable).perform()
 
     def place_the_cursor_xpath(self, selectors_element):
         """Навести курсор на элемент XPATH"""
-        hoverable = WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.XPATH, selectors_element)))
+        hoverable = WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, selectors_element)))
         ActionChains(self.driver).move_to_element(hoverable).perform()
 
     def move_to_element(self, element):
         """Переместиться к элементу + скролл"""
         action = ActionChains(self.driver)
         action.move_to_element(element).perform()
-        scroll_by = 'window.scrollBy(0, -100);'
+        scroll_by = 'window.scrollBy(0, -200);'
         self.driver.execute_script(scroll_by)
 
     def move_mouse_cursor_random(self):
         """Перемещение курсора на рандомное расстояние, если этого требует сайт"""
         pyautogui.moveTo(randint(100, 500), randint(100, 500))
         pyautogui.moveTo(randint(100, 500), randint(100, 500))
+
+    def get_text_invisibility_element_css(self, locator_css):
+        """Получаем текст из невидимого элемента"""
+        time.sleep(3)
+        element = WebDriverWait(self.driver, 10).until(EC.invisibility_of_element((By.CSS_SELECTOR, locator_css)))
+        text = self.driver.execute_script("return arguments[0].innerHTML", element)
+        print("Text element: ", text)
+        return text
+
+    def assert_word(self, word, result):
+        """Проверяем текст"""
+        value_word = word.text
+        assert value_word == result, 'Текст не совпадает с заданным'
+        print('Good value word')
 
     def slices_list(self, list_text, start=0, stop=0):
         """Получить срез текста и вернуть строку"""
@@ -71,15 +85,15 @@ class Base():
         CART_EMPTY = '.empty-message__title-empty-cart'
         try:
             try:
-                WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.XPATH, DELITE_ALL))).click()
+                WebDriverWait(self.driver, 0.5).until(EC.element_to_be_clickable((By.XPATH, DELITE_ALL))).click()
                 print("Товары были удалены из корзины")
                 time.sleep(1)
             except TimeoutException:
-                WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.XPATH, DELITE_PRODUCT))).click()
+                WebDriverWait(self.driver, 0.5).until(EC.element_to_be_clickable((By.XPATH, DELITE_PRODUCT))).click()
                 print("Товар удален из корзины")
                 time.sleep(1)
         except TimeoutException:
-            clean_text = WebDriverWait(self.driver, 5).until(
+            clean_text = WebDriverWait(self.driver, 0.5).until(
                 EC.visibility_of_element_located((By.CSS_SELECTOR, CART_EMPTY))).text
             assert clean_text == 'Корзина пуста', 'cart is not empty'
             print("Корзина была пуста")

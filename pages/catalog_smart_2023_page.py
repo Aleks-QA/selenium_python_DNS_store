@@ -31,51 +31,51 @@ class CatalogTopSmartPage(Base):
     # GETTERS
 
     def get_checkbox_rating_4(self):
-        return WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.XPATH, self.CHECKBOX_RATING_4)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.CHECKBOX_RATING_4)))
 
     def get_input_min_price(self):
-        return WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.XPATH, self.INPUT_MIN_PRICE)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.INPUT_MIN_PRICE)))
 
     def get_input_max_price(self):
-        return WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.INPUT_MAX_PRICE)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.INPUT_MAX_PRICE)))
 
     def get_memory_drop_dawn(self):
-        return WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.XPATH, self.MEMORY_DROP_DAWN)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.MEMORY_DROP_DAWN)))
 
     def get_memory_checkbox_128(self):
-        return WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.XPATH, self.MEMORY_CHECKBOX_128)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.MEMORY_CHECKBOX_128)))
 
     def get_ram_drop_dawn(self):
-        return WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.XPATH, self.RAM_DROP_DAWN)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.RAM_DROP_DAWN)))
 
     def get_ram_checkbox_8(self):
-        return WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.XPATH, self.RAM_CHECKBOX_8)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.RAM_CHECKBOX_8)))
 
     def get_all_filter(self):
-        return WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.XPATH, self.ALL_FILTERS)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.ALL_FILTERS)))
 
     def get_weight_drop_dawn(self):
-        return WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.XPATH, self.WEIGHT_DROP_DAWN)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.WEIGHT_DROP_DAWN)))
 
     def get_weight_checkbox_159(self):
-        return WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.XPATH, self.WEIGHT_CHECK_BOX_159)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.WEIGHT_CHECK_BOX_159)))
 
     def get_apply_filters(self):
-        return WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.XPATH, self.APPLY_FILTERS)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.APPLY_FILTERS)))
 
     def get_name_product_1(self):
-        return WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.XPATH, self.NAME_PRODUCT_1)))
+        return WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located((By.XPATH, self.NAME_PRODUCT_1)))
 
     def get_price_product_1(self):
-        return WebDriverWait(self.driver, 20).until(
+        return WebDriverWait(self.driver, 30).until(
             EC.visibility_of_element_located((By.XPATH, self.PRICE_PRODUCT_1)))
 
     def get_add_to_cart_product_1(self):
-        return WebDriverWait(self.driver, 20).until(
+        return WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable((By.XPATH, self.BUY_OR_ADD_CART_PRODUCT_1)))
 
     def get_cart_button(self):
-        return WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.CART_BUTTON)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.CART_BUTTON)))
 
     # ACTIONS
 

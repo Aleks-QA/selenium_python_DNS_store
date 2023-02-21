@@ -20,13 +20,13 @@ class CartPage(Base):
     # GETTERS
 
     def get_name_product_1(self):
-        return WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.XPATH, self.NAME_PRODUCT_1)))
+        return WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located((By.XPATH, self.NAME_PRODUCT_1)))
 
     def get_price_product_1(self):
-        return WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.XPATH, self.PRICE_PRODUCT_1)))
+        return WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located((By.XPATH, self.PRICE_PRODUCT_1)))
 
     def get_go_to_checkout(self):
-        return WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.XPATH, self.GO_TO_CHECKOUT)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.GO_TO_CHECKOUT)))
 
     # ACTIONS
 

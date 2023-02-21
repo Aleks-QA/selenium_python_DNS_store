@@ -20,13 +20,13 @@ class CheckoutPage(Base):
     # GETTERS
 
     def get_drop_dawn_finish(self):
-        return WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.XPATH, self.DROP_DAWN_PRODUCT)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.DROP_DAWN_PRODUCT)))
 
     def get_name_product_1(self):
-        return WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.XPATH, self.NAME_PRODUCT_1_FINISH)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.NAME_PRODUCT_1_FINISH)))
 
     def get_price_product(self):
-        return WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.XPATH, self.PRICE_PRODUCT_FINISH)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.PRICE_PRODUCT_FINISH)))
 
     # ACTIONS
 

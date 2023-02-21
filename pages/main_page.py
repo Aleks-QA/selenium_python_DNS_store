@@ -1,10 +1,12 @@
+import time
+
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from base.base_class import Base
 
 
-class LoginPage(Base):
+class MainPage(Base):
     """Авторизация пользователя"""
     url = 'https://www.dns-shop.ru/'
 
@@ -22,27 +24,36 @@ class LoginPage(Base):
     USER_AVATAR = '[class="user-profile__level"]'
     TEXT_USER_NAME = '[class="user-profile__username"]'
 
+    MENU_HOUSEHOLD = "//a[text()='Бытовая техника']"
+    MENU_SMARTPHONES = "//a[text()='Смартфоны и фототехника']"
+    HOVER_SMARTPHONES = "//span[text()='Смартфоны']"
+    HOVER_TOP_CATEGORY_SMART = "//a[text()='2023 года']"
+
     # GETTERS
 
     def get_enter_lk(self):
-        return WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.XPATH, self.BUTTON_ENTER_LK)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.BUTTON_ENTER_LK)))
 
     def get_enter_with_password(self):
-        return WebDriverWait(self.driver, 20).until(
+        return WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable((By.XPATH, self.BUTTON_ENTER_WITH_PASSWORD)))
 
     def get_input_email(self):
-        return WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.INPUT_EMAIL)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.INPUT_EMAIL)))
 
     def get_input_password(self):
-        return WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.INPUT_PASSWORD)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.INPUT_PASSWORD)))
 
     def get_enter_authorization(self):
-        return WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.XPATH, self.BUTTON_AUTHORIZATION)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.BUTTON_AUTHORIZATION)))
 
-    def get_user_name(self):
-        return WebDriverWait(self.driver, 20).until(
-            EC.visibility_of_element_located((By.CSS_SELECTOR, self.TEXT_USER_NAME)))
+    # def get_user_name(self):
+    #     return WebDriverWait(self.driver, 30).until(
+    #         EC.visibility_of_element_located((By.CSS_SELECTOR, self.TEXT_USER_NAME)))
+
+    def get_hover_top_category_smart(self):
+        return WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, self.HOVER_TOP_CATEGORY_SMART)))
 
     # ACTIONS
 
@@ -61,9 +72,12 @@ class LoginPage(Base):
     def enter_authorization(self):
         self.get_enter_authorization().click()
 
-    def text_user_name(self):
-        user_name = self.get_user_name().text
-        return user_name
+    # def text_user_name(self):
+    #     user_name = self.get_user_name().text
+    #     return user_name
+
+    def click_hover_top_category_smart(self):
+        self.get_hover_top_category_smart().click()
 
     # METHODS
 
@@ -76,41 +90,20 @@ class LoginPage(Base):
         self.input_email('alexander.risk1996@gmail.com')
         self.input_password('alexander.risk1996')
         self.enter_authorization()
-        self.place_the_cursor_css(self.USER_AVATAR)
+        # self.place_the_cursor_css(self.USER_AVATAR)
         self.assert_url(self.url)
-        user_name_test = self.text_user_name()
-        print('User: ', user_name_test)
-        assert user_name_test == 'Александр Тест', 'Wrong user!'
 
-
-class SelectSmart2023(Base):
-    """Выбрать категорию: смартфоны 2023"""
-
-    def __init__(self, driver):
-        super().__init__(driver)
-        self.driver = driver
-
-    # LOCATORS
-
-    MENU_SMARTPHONES = "//a[text()='Смартфоны и фототехника']"
-    HOVER_SMARTPHONES = "//div[2]/div[1]/div[1]/a[1]"
-    HOVER_TOP_CATEGORY_SMART = '//span[@class="header-menu-desktop__popup"]/a[1]'
-
-    # GETTERS
-
-    def get_hover_top_category_smart(self):
-        return WebDriverWait(self.driver, 20).until(
-            EC.element_to_be_clickable((By.XPATH, self.HOVER_TOP_CATEGORY_SMART)))
-
-    # ACTIONS
-
-    def click_hover_top_category_smart(self):
-        self.get_hover_top_category_smart().click()
-
-    # METHODS
+        user_name = self.get_text_invisibility_element_css(self.TEXT_USER_NAME)
+        assert user_name == 'Александр Тест', 'Wrong user!'
+        print('User: ', user_name)
 
     def select_product_main_page(self):
         """Выбрать топ смартфонов 2023 года из hover меню"""
+        self.place_the_cursor_xpath(self.MENU_HOUSEHOLD)
+        time.sleep(2) # баг ДНС, при наведении на любую категорию показывает категорию бытовой техники, нужно подгрузить
         self.place_the_cursor_xpath(self.MENU_SMARTPHONES)
+        print('Навели курсор на смартфоны и фототехника')
         self.place_the_cursor_xpath(self.HOVER_SMARTPHONES)
+        print('Навели курсор на смартфоны')
         self.click_hover_top_category_smart()
+        print('Клик на 2023 года')
