@@ -43,6 +43,7 @@ class CartPage(Base):
 
     def go_to_checkout_product_1(self):
         """Проверить название и цену товара и перейти к оформлению"""
+        self.get_current_url()
         try:
             text_name_product_1 = self.get_name_product_1().text
             text_price_product_1 = self.slices_list(list_text=self.text_cart_price_product_1(), stop=2)

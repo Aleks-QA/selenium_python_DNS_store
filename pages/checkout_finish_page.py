@@ -43,6 +43,7 @@ class CheckoutPage(Base):
 
     def finish_buy_product_1(self):
         """Проверить название и цену товара во время оформления заказа, сделать скриншот"""
+        self.get_current_url()
         text_price_finish = self.slices_list(list_text=self.text_price_product(), start=1, stop=3)
         self.click_drop_dawn_finish()
         text_name_finish = self.slices_list(list_text=self.text_name_product_1(), stop=8)

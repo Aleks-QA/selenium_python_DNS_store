@@ -84,6 +84,7 @@ class MainPage(Base):
 
     def authorization(self):
         """Авторизация"""
+        self.get_current_url()
         self.driver.get(self.url)
         self.driver.maximize_window()
         self.enter_lk()
@@ -100,6 +101,7 @@ class MainPage(Base):
 
     def select_product_hover_menu_smart_2023_main_page(self):
         """Выбрать топ смартфонов 2023 года из hover меню"""
+        self.get_current_url()
         self.place_the_cursor_xpath(self.MENU_HOUSEHOLD)
         time.sleep(2) # баг ДНС, при наведении на любую категорию показывает категорию бытовой техники, нужно подгрузить
         self.place_the_cursor_xpath(self.MENU_SMARTPHONES)
@@ -111,5 +113,6 @@ class MainPage(Base):
 
     def select_product_smartphones(self):
         """Выбрать в каталоге смартфоны и фототехника"""
+        self.get_current_url()
         self.click_category_smartphones()
         print('Выбрали категорию смартфоны и фототехника')

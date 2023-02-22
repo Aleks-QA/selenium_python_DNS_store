@@ -31,7 +31,6 @@ class Base():
         action = ActionChains(self.driver)
         action.move_to_element(element).perform()
 
-
     def move_mouse_cursor_random(self):
         """Перемещение курсора на рандомное расстояние, если этого требует сайт"""
         pyautogui.moveTo(randint(100, 500), randint(100, 500))

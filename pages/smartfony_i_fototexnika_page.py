@@ -27,5 +27,6 @@ class SmartfonyFototexnika(Base):
 
     def select_product_smartphones(self):
         """Выбрать категорию смартфоны 2023 года"""
+        self.get_current_url()
         self.click_category_smart_2023()
         print('Выбрали категорию смартфоны 2023 года')
