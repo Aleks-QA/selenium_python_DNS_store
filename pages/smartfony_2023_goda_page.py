@@ -144,6 +144,8 @@ class CatalogTopSmartPage(Base):
         """Выбрать фильтры, сохранить название и цену товара, добавить и перейти в корзину"""
         self.get_current_url()
         self.move_to_element(self.get_all_filter())
+        time.sleep(2)
+
         self.checkbox_rating_4()
         print('Выбран фильтр: рейтинг 4 и выше ')
         self.input_min_price()

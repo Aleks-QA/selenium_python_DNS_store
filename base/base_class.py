@@ -81,24 +81,20 @@ class Base():
         """Удалить товар/товары из корзины"""
         print('Очистка корзины')
         self.driver.get('https://www.dns-shop.ru/cart/')
-
-        # time.sleep(2)
-        # self.driver.refresh()
-
         DELITE_PRODUCT = '//p[text()="Удалить"]'
         DELITE_ALL = '//div[text()="Удалить выбранные"]'
         CART_EMPTY = '.empty-message__title-empty-cart'
         try:
             try:
-                WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, DELITE_ALL))).click()
+                WebDriverWait(self.driver, 0.5).until(EC.element_to_be_clickable((By.XPATH, DELITE_ALL))).click()
                 print("Товары были удалены из корзины")
                 time.sleep(1)
             except TimeoutException:
-                WebDriverWait(self.driver, 1).until(EC.element_to_be_clickable((By.XPATH, DELITE_PRODUCT))).click()
+                WebDriverWait(self.driver, 0.5).until(EC.element_to_be_clickable((By.XPATH, DELITE_PRODUCT))).click()
                 print("Товар удален из корзины")
                 time.sleep(1)
         except TimeoutException:
-            clean_text = WebDriverWait(self.driver, 1).until(
+            clean_text = WebDriverWait(self.driver, 0.5).until(
                 EC.visibility_of_element_located((By.CSS_SELECTOR, CART_EMPTY))).text
             assert clean_text == 'Корзина пуста', 'cart is not empty'
             print("Корзина была пуста")

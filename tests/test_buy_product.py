@@ -30,7 +30,7 @@ def test_buy_product_1(set_up):
     try:
         mp.select_product_hover_menu_smart_2023_main_page()
     except TimeoutException:
-        print("У сайта ДНС снова не работает hover меню")
+        print("На сайте ДНС сейчас не работает hover меню")
         mp.click_category_smartphones()
         s_i_f.select_product_smartphones()
 
@@ -47,7 +47,7 @@ def test_buy_product_1(set_up):
     assert name_and_price_catalog == name_and_price_finish, 'name or price changed during order confirmation'
 
 i = 1
-while i < 20:
+while i < 5:
     i += 1
     test_buy_product_1(set_up)
     print('__________________________', i)

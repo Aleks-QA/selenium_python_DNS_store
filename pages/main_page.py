@@ -24,7 +24,6 @@ class MainPage(Base):
     BUTTON_AUTHORIZATION = '//div[@class="base-main-button"]//span[text()="Войти"]'
     USER_AVATAR = '[class="user-profile__level"]'
     TEXT_USER_NAME = '[class="user-profile__username"]'
-
     MENU_HOUSEHOLD = "//a[text()='Бытовая техника']"
     MENU_SMARTPHONES = "//a[text()='Смартфоны и фототехника']"
     HOVER_SMARTPHONES = "//span[text()='Смартфоны']"
@@ -84,17 +83,15 @@ class MainPage(Base):
 
     def authorization(self):
         """Авторизация"""
-        self.get_current_url()
         self.driver.get(self.url)
         self.driver.maximize_window()
+        self.get_current_url()
         self.enter_lk()
         self.enter_with_password()
         self.input_email('alexander.risk1996@gmail.com')
         self.input_password('alexander.risk1996')
         self.enter_authorization()
-        # self.place_the_cursor_css(self.USER_AVATAR)
         self.assert_url(self.url)
-
         user_name = self.get_text_invisibility_element_css(self.TEXT_USER_NAME)
         assert user_name == 'Александр Тест', 'Wrong user!'
         print('User: ', user_name)
@@ -103,7 +100,7 @@ class MainPage(Base):
         """Выбрать топ смартфонов 2023 года из hover меню"""
         self.get_current_url()
         self.place_the_cursor_xpath(self.MENU_HOUSEHOLD)
-        time.sleep(2) # баг ДНС, при наведении на любую категорию показывает категорию бытовой техники, нужно подгрузить
+        time.sleep(2)
         self.place_the_cursor_xpath(self.MENU_SMARTPHONES)
         print('Навели курсор на смартфоны и фототехника')
         self.place_the_cursor_xpath(self.HOVER_SMARTPHONES)
