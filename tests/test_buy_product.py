@@ -46,9 +46,9 @@ def test_buy_product_1(set_up):
     name_and_price_finish = checkout_p.finish_buy_product_1()
     assert name_and_price_catalog == name_and_price_finish, 'name or price changed during order confirmation'
 
-i = 1
-while i < 5:
-    i += 1
-    test_buy_product_1(set_up)
-    print('__________________________', i)
+# i = 1
+# while i < 5:
+#     i += 1
+#     test_buy_product_1(set_up)
+#     print('__________________________', i)
 
