@@ -1,5 +1,6 @@
 import time
 
+from selenium.common import TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
@@ -47,13 +48,14 @@ class MainPage(Base):
     def get_enter_authorization(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.BUTTON_AUTHORIZATION)))
 
-    # def get_user_name(self):
-    #     return WebDriverWait(self.driver, 30).until(
-    #         EC.visibility_of_element_located((By.CSS_SELECTOR, self.TEXT_USER_NAME)))
 
     def get_hover_top_category_smart(self):
         return WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable((By.XPATH, self.HOVER_TOP_CATEGORY_SMART)))
+
+    def get_category_smartphones(self):
+        return WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, self.MENU_SMARTPHONES)))
 
     # ACTIONS
 
@@ -72,9 +74,8 @@ class MainPage(Base):
     def enter_authorization(self):
         self.get_enter_authorization().click()
 
-    # def text_user_name(self):
-    #     user_name = self.get_user_name().text
-    #     return user_name
+    def click_category_smartphones(self):
+        self.get_category_smartphones().click()
 
     def click_hover_top_category_smart(self):
         self.get_hover_top_category_smart().click()
@@ -97,7 +98,7 @@ class MainPage(Base):
         assert user_name == 'Александр Тест', 'Wrong user!'
         print('User: ', user_name)
 
-    def select_product_main_page(self):
+    def select_product_hover_menu_smart_2023_main_page(self):
         """Выбрать топ смартфонов 2023 года из hover меню"""
         self.place_the_cursor_xpath(self.MENU_HOUSEHOLD)
         time.sleep(2) # баг ДНС, при наведении на любую категорию показывает категорию бытовой техники, нужно подгрузить
@@ -107,3 +108,8 @@ class MainPage(Base):
         print('Навели курсор на смартфоны')
         self.click_hover_top_category_smart()
         print('Клик на 2023 года')
+
+    def select_product_smartphones(self):
+        """Выбрать в каталоге смартфоны и фототехника"""
+        self.click_category_smartphones()
+        print('Выбрали категорию смартфоны и фототехника')

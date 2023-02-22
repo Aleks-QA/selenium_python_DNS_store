@@ -12,9 +12,9 @@ class CatalogTopSmartPage(Base):
 
     # LOCATORS
 
-    NAME_PRODUCT_1 = '//div[3]/div/div[2]/div[1]/a'  # //div[3]/div/div[2]/div[number]/a
-    PRICE_PRODUCT_1 = '//div/div[2]/div[1]/div[4]/div/div[1]'  # //div/div[2]/div[number]/div[4]/div/div[1]
-    BUY_OR_ADD_CART_PRODUCT_1 = '//div/div[2]/div[1]/div[4]/button[2]'  # //div/div[2]/div[number]/div[4]/button[2]
+    NAME_PRODUCT_1 = '//div[3]/div/div[2]/div[1]/a'
+    PRICE_PRODUCT_1 = '//div/div[2]/div[1]/div[4]/div/div[1]'
+    BUY_OR_ADD_CART_PRODUCT_1 = '//div/div[2]/div[1]/div[4]/button[2]'
     CART_BUTTON = 'a[class="buttons__link ui-link cart-link-counter"]'
     CHECKBOX_RATING_4 = '//div[2]/div[1]/div/div[3]/div[1]/div[2]/label'
     INPUT_MIN_PRICE = '//div[3]/div[1]/div[4]/div/div/div[1]/input'
@@ -148,22 +148,28 @@ class CatalogTopSmartPage(Base):
         self.input_max_price()
         print('Выбран фильтр: максимальная цена ')
         self.memory_drop_dawn()
+        print('Открыт выпадающий список объем встроенной памяти ')
         self.memory_checkbox_128()
         print('Выбран фильтр: объем встроенной памяти ')
         self.ram_drop_dawn()
+        print('Открыт выпадающий список объем оперативной памяти ')
         self.ram_checkbox_8()
         print('Выбран фильтр: объем оперативной памяти ')
         self.all_filter()
+        print('Открыты дополнительные фильтры')
         self.weight_drop_dawn()
+        print('Открыт выпадающий список веса устройства ')
         self.weight_checkbox_159()
         print('Выбран фильтр: вес устройства ')
         self.apply_filters()
         print('Фильтры применены ')
-        self.click_add_to_cart_product_1()
 
         text_name = self.slices_list(list_text=self.text_name_product_1(), stop=8)
         text_price = self.slices_list(list_text=self.text_price_product_1(), stop=2)
 
+        self.click_add_to_cart_product_1()
+        print('Добавлено в корзину')
         self.click_cart_button()
+        print('Перешли в корзину')
         print(f"Название товара в каталоге: {text_name}, его стоимость: {text_price}")
         return text_name, text_price

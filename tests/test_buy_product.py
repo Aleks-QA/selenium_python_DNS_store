@@ -1,15 +1,15 @@
-import time
-
 from selenium import webdriver
-from base.base_class import Base
 from conftest import set_up
+from selenium.common import TimeoutException
+from base.base_class import Base
 from pages.cart_page import CartPage
 from pages.main_page import MainPage
 from webdriver_manager.chrome import ChromeDriverManager
 from pages.checkout_finish_page import CheckoutPage
-from pages.catalog_smart_2023_page import CatalogTopSmartPage
+from pages.smartfony_2023_goda_page import CatalogTopSmartPage
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.chrome.options import Options
+from pages.smartfony_i_fototexnika_page import SmartfonyFototexnika
 
 
 def test_buy_product_1(set_up):
@@ -17,26 +17,33 @@ def test_buy_product_1(set_up):
     options.add_experimental_option('excludeSwitches', ['enable-logging'])  # от лишних сообщений в терминале
     # options.add_argument('--headless')
     driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), chrome_options=options)
+
     base = Base(driver)
-    time.sleep(1)
+
     mp = MainPage(driver)
     mp.authorization()
-    time.sleep(1)
+
     base.clean_cart()
     driver.back()
-    time.sleep(1)
-    mp.select_product_main_page()
-    time.sleep(1)
+
+    s_i_f = SmartfonyFototexnika(driver)
+    try:
+        mp.select_product_hover_menu_smart_2023_main_page()
+    except TimeoutException:
+        print("У сайта ДНС снова не работает hover меню")
+        mp.click_category_smartphones()
+        s_i_f.select_product_smartphones()
+
     top_smart_2023 = CatalogTopSmartPage(driver)
     name_and_price_catalog = top_smart_2023.add_to_cart_product_1()
-    time.sleep(1)
+
     cp = CartPage(driver)
     name_and_price_cart = cp.go_to_checkout_product_1()
-    time.sleep(1)
+
     assert name_and_price_catalog == name_and_price_cart, 'the name or price has changed after being added to the cart'
+
     checkout_p = CheckoutPage(driver)
     name_and_price_finish = checkout_p.finish_buy_product_1()
-    time.sleep(1)
     assert name_and_price_catalog == name_and_price_finish, 'name or price changed during order confirmation'
 
 i = 1
