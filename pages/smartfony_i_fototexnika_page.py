@@ -3,6 +3,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
+from utilities.logger import Logger
+
 
 class SmartfonyFototexnika(Base):
     def __init__(self, driver):
@@ -27,6 +29,8 @@ class SmartfonyFototexnika(Base):
 
     def select_product_smartphones(self):
         """Выбрать категорию смартфоны 2023 года"""
+        Logger.add_start_step('select_product_smartphones')
         self.get_current_url()
         self.click_category_smart_2023()
         print('Выбрали категорию смартфоны 2023 года')
+        Logger.add_end_step(self.driver.current_url, method='select_product_smartphones')

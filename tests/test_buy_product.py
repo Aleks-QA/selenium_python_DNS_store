@@ -11,16 +11,18 @@ from selenium.webdriver.chrome.options import Options
 from pages.smartfony_i_fototexnika_page import SmartfonyFototexnika
 
 
-def test_buy_product_1(set_up):
+def test_buy_smartphone_2023(set_up):
     options = Options()
     options.add_experimental_option('excludeSwitches', ['enable-logging'])  # от лишних сообщений в терминале
     # options.add_argument('--headless')
     driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), chrome_options=options)
 
     base = Base(driver)
-
     mp = MainPage(driver)
-    mp.authorization()
+
+    email = 'alexander.risk1996@gmail.com'
+    password = 'alexander.risk1996'
+    mp.authorization(email, password)
 
     s_i_f = SmartfonyFototexnika(driver)
     try:
@@ -42,13 +44,12 @@ def test_buy_product_1(set_up):
     name_and_price_finish = checkout_p.finish_buy_product_1()
 
     base.clean_cart()
-    # driver.back()
 
     assert name_and_price_catalog == name_and_price_finish, 'name or price changed during order confirmation'
 
 # i = 1
 # while i < 5:
 #     i += 1
-#     test_buy_product_1(set_up)
+#     test_buy_product_1()
 #     print('__________________________', i)
 

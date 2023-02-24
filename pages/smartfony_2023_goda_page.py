@@ -4,6 +4,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from base.base_class import Base
+from utilities.logger import Logger
 
 
 class CatalogTopSmartPage(Base):
@@ -142,9 +143,11 @@ class CatalogTopSmartPage(Base):
 
     def add_to_cart_product_1(self):
         """Выбрать фильтры, сохранить название и цену товара, добавить и перейти в корзину"""
+        Logger.add_start_step(method='add_to_cart_product_1')
         self.get_current_url()
         self.move_to_element(self.get_all_filter())
-        time.sleep(2)
+        # print("Ждем загрузки фильтров")
+        # time.sleep(2)
 
         self.checkbox_rating_4()
         print('Выбран фильтр: рейтинг 4 и выше ')
@@ -179,4 +182,5 @@ class CatalogTopSmartPage(Base):
         self.click_cart_button()
         print('Перешли в корзину')
         print(f"Название товара в каталоге: {text_name}, его стоимость: {text_price}")
+        Logger.add_end_step(self.driver.current_url, method='add_to_cart_product_1')
         return text_name, text_price

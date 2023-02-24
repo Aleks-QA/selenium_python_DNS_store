@@ -1,6 +1,5 @@
 import pytest
 
-
 @pytest.fixture
 def set_up():
     print('\n__Start test__')

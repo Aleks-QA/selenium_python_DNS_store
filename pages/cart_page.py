@@ -3,6 +3,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from base.base_class import Base
+from utilities.logger import Logger
 
 
 class CartPage(Base):
@@ -43,6 +44,7 @@ class CartPage(Base):
 
     def go_to_checkout_product_1(self):
         """Проверить название и цену товара и перейти к оформлению"""
+        Logger.add_start_step(method='go_to_checkout_product_1')
         self.get_current_url()
         try:
             text_name_product_1 = self.get_name_product_1().text
@@ -54,4 +56,5 @@ class CartPage(Base):
             text_price_product_1 = self.slices_list(list_text=self.text_cart_price_product_1(), stop=2)
             print(f"Название товара в корзине: {text_name_product_1}, его стоимость: {text_price_product_1}")
         self.click_go_to_checkout()
+        Logger.add_end_step(self.driver.current_url, method='go_to_checkout_product_1')
         return text_name_product_1, text_price_product_1
