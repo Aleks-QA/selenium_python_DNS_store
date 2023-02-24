@@ -22,9 +22,6 @@ def test_buy_product_1(set_up):
     mp = MainPage(driver)
     mp.authorization()
 
-    base.clean_cart()
-    driver.back()
-
     s_i_f = SmartfonyFototexnika(driver)
     try:
         mp.select_product_hover_menu_smart_2023_main_page()
@@ -43,6 +40,10 @@ def test_buy_product_1(set_up):
 
     checkout_p = CheckoutPage(driver)
     name_and_price_finish = checkout_p.finish_buy_product_1()
+
+    base.clean_cart()
+    # driver.back()
+
     assert name_and_price_catalog == name_and_price_finish, 'name or price changed during order confirmation'
 
 # i = 1
