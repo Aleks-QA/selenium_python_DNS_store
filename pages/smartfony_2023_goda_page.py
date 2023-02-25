@@ -1,5 +1,5 @@
 import time
-
+import allure
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
@@ -143,44 +143,42 @@ class CatalogTopSmartPage(Base):
 
     def add_to_cart_product_1(self):
         """Выбрать фильтры, сохранить название и цену товара, добавить и перейти в корзину"""
-        Logger.add_start_step(method='add_to_cart_product_1')
-        self.get_current_url()
-        self.move_to_element(self.get_all_filter())
-        # print("Ждем загрузки фильтров")
-        # time.sleep(2)
+        with allure.step('Add to cart product 1'):
+            Logger.add_start_step(method='add_to_cart_product_1')
+            self.get_current_url()
+            self.move_to_element(self.get_all_filter())
+            self.checkbox_rating_4()
+            print('Выбран фильтр: рейтинг 4 и выше ')
+            self.input_min_price()
+            print('Выбран фильтр: минимальная цена ')
+            self.input_max_price()
+            print('Выбран фильтр: максимальная цена ')
+            self.memory_drop_dawn()
+            print('Открыт выпадающий список объем встроенной памяти ')
+            self.memory_checkbox_128()
+            print('Выбран фильтр: объем встроенной памяти ')
+            self.ram_drop_dawn()
+            print('Открыт выпадающий список объем оперативной памяти ')
+            self.ram_checkbox_8()
+            print('Выбран фильтр: объем оперативной памяти ')
+            self.all_filter()
+            print('Открыты дополнительные фильтры')
+            self.weight_drop_dawn()
+            print('Открыт выпадающий список веса устройства ')
+            self.weight_checkbox_159()
+            print('Выбран фильтр: вес устройства ')
+            self.apply_filters()
+            print('Нажали применить фильтры')
+            print('Ждем применения фильтров ')
+            time.sleep(2)
 
-        self.checkbox_rating_4()
-        print('Выбран фильтр: рейтинг 4 и выше ')
-        self.input_min_price()
-        print('Выбран фильтр: минимальная цена ')
-        self.input_max_price()
-        print('Выбран фильтр: максимальная цена ')
-        self.memory_drop_dawn()
-        print('Открыт выпадающий список объем встроенной памяти ')
-        self.memory_checkbox_128()
-        print('Выбран фильтр: объем встроенной памяти ')
-        self.ram_drop_dawn()
-        print('Открыт выпадающий список объем оперативной памяти ')
-        self.ram_checkbox_8()
-        print('Выбран фильтр: объем оперативной памяти ')
-        self.all_filter()
-        print('Открыты дополнительные фильтры')
-        self.weight_drop_dawn()
-        print('Открыт выпадающий список веса устройства ')
-        self.weight_checkbox_159()
-        print('Выбран фильтр: вес устройства ')
-        self.apply_filters()
-        print('Нажали применить фильтры')
-        print('Ждем применения фильтров ')
-        time.sleep(2)
+            text_name = self.slices_list(list_text=self.text_name_product_1(), stop=8)
+            text_price = self.slices_list(list_text=self.text_price_product_1(), stop=2)
 
-        text_name = self.slices_list(list_text=self.text_name_product_1(), stop=8)
-        text_price = self.slices_list(list_text=self.text_price_product_1(), stop=2)
-
-        self.click_add_to_cart_product_1()
-        print('Добавлено в корзину')
-        self.click_cart_button()
-        print('Перешли в корзину')
-        print(f"Название товара в каталоге: {text_name}, его стоимость: {text_price}")
-        Logger.add_end_step(self.driver.current_url, method='add_to_cart_product_1')
-        return text_name, text_price
+            self.click_add_to_cart_product_1()
+            print('Добавлено в корзину')
+            self.click_cart_button()
+            print('Перешли в корзину')
+            print(f"Название товара в каталоге: {text_name}, его стоимость: {text_price}")
+            Logger.add_end_step(self.driver.current_url, method='add_to_cart_product_1')
+            return text_name, text_price

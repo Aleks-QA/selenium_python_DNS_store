@@ -2,7 +2,7 @@ from base.base_class import Base
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-
+import allure
 from utilities.logger import Logger
 
 
@@ -27,10 +27,11 @@ class SmartfonyFototexnika(Base):
 
     # METHODS
 
-    def select_product_smartphones(self):
+    def select_category_smartphones_2023(self):
         """Выбрать категорию смартфоны 2023 года"""
-        Logger.add_start_step('select_product_smartphones')
-        self.get_current_url()
-        self.click_category_smart_2023()
-        print('Выбрали категорию смартфоны 2023 года')
-        Logger.add_end_step(self.driver.current_url, method='select_product_smartphones')
+        with allure.step('Select category smartphones'):
+            Logger.add_start_step('select_category_smartphones')
+            self.get_current_url()
+            self.click_category_smart_2023()
+            print('Выбрали категорию смартфоны 2023 года')
+            Logger.add_end_step(self.driver.current_url, method='select_category_smartphones')

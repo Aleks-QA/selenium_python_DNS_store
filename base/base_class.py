@@ -15,7 +15,7 @@ class Base():
 
     def place_the_cursor_css(self, selectors_element):
         """Навести курсор на элемент CSS"""
-        hoverable = WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, selectors_element)))
+        hoverable = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, selectors_element)))
         ActionChains(self.driver).move_to_element(hoverable).perform()
 
     def place_the_cursor_xpath(self, selectors_element):

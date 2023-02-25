@@ -1,5 +1,5 @@
 import time
-
+import allure
 from selenium.common import TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -84,41 +84,43 @@ class MainPage(Base):
 
     def authorization(self, email, password):
         """Авторизация пользователя"""
-        Logger.add_start_step(method='authorization')
-        self.driver.get(self.url)
-        self.driver.maximize_window()
-        self.get_current_url()
-        self.enter_lk()
-        self.enter_with_password()
-        self.input_email(email)
-        self.input_password(password)
-        self.enter_authorization()
-        self.assert_url(self.url)
-        user_name = self.get_text_invisibility_element_css(self.TEXT_USER_NAME)
-        assert user_name == 'Александр Тест', 'Wrong user!'
-        print('User: ', user_name)
-        Logger.add_end_step(url=self.driver.current_url, method='authorization')
+        with allure.step('Authorization'):
+            Logger.add_start_step(method='authorization')
+            self.driver.get(self.url)
+            self.driver.maximize_window()
+            self.get_current_url()
+            self.enter_lk()
+            self.enter_with_password()
+            self.input_email(email)
+            self.input_password(password)
+            self.enter_authorization()
+            self.assert_url(self.url)
+            user_name = self.get_text_invisibility_element_css(self.TEXT_USER_NAME)
+            assert user_name == 'Александр Тест', 'Wrong user!'
+            print('User: ', user_name)
+            Logger.add_end_step(url=self.driver.current_url, method='authorization')
 
-    def select_product_hover_menu_smart_2023_main_page(self):
+    def select_category_hover_menu_smart_2023_main_page(self):
         """Выбрать топ смартфонов 2023 года из hover меню"""
-        Logger.add_start_step(method='select_product_hover_menu_smart_2023_main_page')
-        self.get_current_url()
-        self.place_the_cursor_xpath(self.MENU_HOUSEHOLD)
-        time.sleep(2)
-        self.place_the_cursor_xpath(self.MENU_SMARTPHONES)
-        print('Навели курсор на смартфоны и фототехника')
-        self.place_the_cursor_xpath(self.HOVER_SMARTPHONES)
-        print('Навели курсор на смартфоны')
-        self.click_hover_top_category_smart()
-        print('Клик на 2023 года')
-        Logger.add_end_step(self.driver.current_url, method='select_product_hover_menu_smart_2023_main_page')
+        with allure.step('Select category hover menu smartphone 2023 main page'):
+            Logger.add_start_step(method='select_product_hover_menu_smart_2023_main_page')
+            self.get_current_url()
+            self.place_the_cursor_xpath(self.MENU_HOUSEHOLD)
+            time.sleep(3)
+            self.place_the_cursor_xpath(self.MENU_SMARTPHONES)
+            print('Навели курсор на смартфоны и фототехника')
+            self.place_the_cursor_xpath(self.HOVER_SMARTPHONES)
+            print('Навели курсор на смартфоны')
+            self.click_hover_top_category_smart()
+            print('Клик на 2023 года')
+            Logger.add_end_step(self.driver.current_url, method='select_category_hover_menu_smart_2023_main_page')
 
-
-    def select_product_smartphones(self):
-        """Выбрать в каталоге смартфоны и фототехника"""
-        Logger.add_start_step(method='select_product_smartphones')
-        self.get_current_url()
-        self.click_category_smartphones()
-        print('Выбрали категорию смартфоны и фототехника')
-        Logger.add_end_step(self.driver.current_url, method='select_product_smartphones')
+    # def select_category_smartphones(self):
+    #     """Выбрать в каталоге смартфоны и фототехника"""
+    #     with allure.step('Select category smartphones'):
+    #         Logger.add_start_step(method='select_product_smartphones')
+    #         self.get_current_url()
+    #         self.click_category_smartphones()
+    #         print('Выбрали категорию смартфоны и фототехника')
+    #         Logger.add_end_step(self.driver.current_url, method='select_category_smartphones')
 
