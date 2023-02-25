@@ -1,0 +1,50 @@
+
+-----
+Test: tests/test_buy_smartphone_2023_age.py::test_buy_smartphone_2023 (call)
+Start time: 2023-02-25 15:41:28.031177
+Start name method: authorization
+
+End time: 2023-02-25 15:41:32.974422
+End name method: authorization
+URL: https://www.dns-shop.ru/
+-----
+
+-----
+Test: tests/test_buy_smartphone_2023_age.py::test_buy_smartphone_2023 (call)
+Start time: 2023-02-25 15:41:32.975420
+Start name method: select_product_hover_menu_smart_2023_main_page
+
+End time: 2023-02-25 15:41:41.366417
+End name method: select_category_hover_menu_smart_2023_main_page
+URL: https://www.dns-shop.ru/catalog/recipe/3907bff298e20bb0/2023-goda/
+-----
+
+-----
+Test: tests/test_buy_smartphone_2023_age.py::test_buy_smartphone_2023 (call)
+Start time: 2023-02-25 15:41:41.367414
+Start name method: add_to_cart_product_1
+
+End time: 2023-02-25 15:41:51.365430
+End name method: add_to_cart_product_1
+URL: https://www.dns-shop.ru/cart/
+-----
+
+-----
+Test: tests/test_buy_smartphone_2023_age.py::test_buy_smartphone_2023 (call)
+Start time: 2023-02-25 15:41:51.366430
+Start name method: go_to_checkout_product_1
+
+End time: 2023-02-25 15:41:51.513037
+End name method: go_to_checkout_product_1
+URL: https://www.dns-shop.ru/cart/
+-----
+
+-----
+Test: tests/test_buy_smartphone_2023_age.py::test_buy_smartphone_2023 (call)
+Start time: 2023-02-25 15:41:51.513037
+Start name method: finish_buy_product_1
+
+End time: 2023-02-25 15:41:52.314328
+End name method: finish_buy_product_1
+URL: https://www.dns-shop.ru/checkout/
+-----
