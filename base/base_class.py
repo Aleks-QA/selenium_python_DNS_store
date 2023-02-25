@@ -13,14 +13,14 @@ class Base():
     def __init__(self, driver):
         self.driver = driver
 
-    def place_the_cursor_css(self, selectors_element):
+    def place_the_cursor_css(self, selector_css):
         """Навести курсор на элемент CSS"""
-        hoverable = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, selectors_element)))
+        hoverable = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, selector_css)))
         ActionChains(self.driver).move_to_element(hoverable).perform()
 
-    def place_the_cursor_xpath(self, selectors_element):
+    def place_the_cursor_xpath(self, selector_xpath):
         """Навести курсор на элемент XPATH"""
-        hoverable = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, selectors_element)))
+        hoverable = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, selector_xpath)))
         ActionChains(self.driver).move_to_element(hoverable).perform()
 
     def move_to_element(self, element):
