@@ -39,7 +39,7 @@ class Base():
     def get_text_invisibility_element_css(self, locator_css):
         """Получаем текст из невидимого элемента"""
         time.sleep(3)
-        element = WebDriverWait(self.driver, 5).until(EC.invisibility_of_element((By.CSS_SELECTOR, locator_css)))
+        element = WebDriverWait(self.driver, 30).until(EC.presence_of_element_located((By.CSS_SELECTOR, locator_css)))
         text = self.driver.execute_script("return arguments[0].innerHTML", element)
         print("Text element: ", text)
         return text
@@ -76,25 +76,3 @@ class Base():
         self.driver.save_screenshot(
             '.\\screen\\' + name_screenshot)
         print('Сделан скриншот')
-
-    def clean_cart(self):
-        """Удалить товар/товары из корзины"""
-        print('Очистка корзины')
-        self.driver.get('https://www.dns-shop.ru/cart/')
-        DELITE_PRODUCT = '//p[text()="Удалить"]'
-        DELITE_ALL = '//div[text()="Удалить выбранные"]'
-        CART_EMPTY = '.empty-message__title-empty-cart'
-        try:
-            try:
-                WebDriverWait(self.driver, 0.5).until(EC.element_to_be_clickable((By.XPATH, DELITE_ALL))).click()
-                print("Товары были удалены из корзины")
-                time.sleep(1)
-            except TimeoutException:
-                WebDriverWait(self.driver, 0.5).until(EC.element_to_be_clickable((By.XPATH, DELITE_PRODUCT))).click()
-                print("Товар удален из корзины")
-                time.sleep(1)
-        except TimeoutException:
-            clean_text = WebDriverWait(self.driver, 0.5).until(
-                EC.visibility_of_element_located((By.CSS_SELECTOR, CART_EMPTY))).text
-            assert clean_text == 'Корзина пуста', 'cart is not empty'
-            print("Корзина была пуста")

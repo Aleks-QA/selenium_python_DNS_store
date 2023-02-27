@@ -1,0 +1,80 @@
+
+-----
+Test: tests/test_buy_smartphone_2023_age.py::test_buy_smartphone_2023 (call)
+Start time: 2023-02-27 15:05:22.651872
+Start name method: authorization
+
+End time: 2023-02-27 15:05:30.979359
+End name method: authorization
+URL: https://www.dns-shop.ru/
+-----
+
+-----
+Test: tests/test_buy_smartphone_2023_age.py::test_buy_smartphone_2023 (call)
+Start time: 2023-02-27 15:05:30.980356
+Start name method: select_product_hover_menu_smart_2023_main_page
+
+End time: 2023-02-27 15:05:37.145864
+End name method: select_category_hover_menu_smart_2023_main_page
+URL: https://www.dns-shop.ru/catalog/recipe/3907bff298e20bb0/2023-goda/
+-----
+
+-----
+Test: tests/test_buy_smartphone_2023_age.py::test_buy_smartphone_2023 (call)
+Start time: 2023-02-27 15:05:37.146861
+Start name method: add_to_cart_product_1
+
+End time: 2023-02-27 15:05:46.785373
+End name method: add_to_cart_product_1
+URL: https://www.dns-shop.ru/cart/
+-----
+
+-----
+Test: tests/test_buy_smartphone_2023_age.py::test_buy_smartphone_2023 (call)
+Start time: 2023-02-27 15:05:46.785373
+Start name method: go_to_checkout_product_1
+
+End time: 2023-02-27 15:05:46.936183
+End name method: go_to_checkout_product_1
+URL: https://www.dns-shop.ru/cart/
+-----
+
+-----
+Test: tests/test_buy_smartphone_2023_age.py::test_buy_smartphone_2023 (call)
+Start time: 2023-02-27 15:05:46.936183
+Start name method: finish_buy_product_1
+
+End time: 2023-02-27 15:05:47.741025
+End name method: finish_buy_product_1
+URL: https://www.dns-shop.ru/checkout/
+-----
+
+-----
+Test: tests/test_buy_smartphone_2023_age.py::test_buy_smartphone_2023 (call)
+Start time: 2023-02-27 15:05:47.741025
+Start name method: clean_cart
+
+End time: 2023-02-27 15:05:52.912754
+End name method: clean_cart
+URL: https://www.dns-shop.ru/cart/
+-----
+
+-----
+Test: tests/test_clean_cart.py::test_clean_cart (call)
+Start time: 2023-02-27 15:05:56.943787
+Start name method: authorization
+
+End time: 2023-02-27 15:06:09.470455
+End name method: authorization
+URL: https://www.dns-shop.ru/
+-----
+
+-----
+Test: tests/test_clean_cart.py::test_clean_cart (call)
+Start time: 2023-02-27 15:06:09.470455
+Start name method: clean_cart
+
+End time: 2023-02-27 15:06:16.584713
+End name method: clean_cart
+URL: https://www.dns-shop.ru/cart/
+-----

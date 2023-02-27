@@ -30,5 +30,6 @@ Current URL: https://www.dns-shop.ru/cart/
 Название товара во время подтверждения заказа: 6.43" Смартфон OPPO Reno8 T 128 ГБ оранжевый, его стоимость: 19 999
 Сделан скриншот
 Очистка корзины
+Current URL: https://www.dns-shop.ru/cart/
 Товар удален из корзины
 __Finish test__

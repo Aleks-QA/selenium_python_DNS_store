@@ -1,0 +1,10 @@
+
+__Start test__
+Current URL: https://www.dns-shop.ru/
+Good value URL
+Text element:  Александр Тест
+User:  Александр Тест
+Очистка корзины
+Current URL: https://www.dns-shop.ru/cart/
+Корзина была пуста
+__Finish test__

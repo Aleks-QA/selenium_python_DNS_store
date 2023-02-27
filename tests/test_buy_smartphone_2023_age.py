@@ -13,15 +13,13 @@ from pages.smartfony_i_fototexnika_page import SmartfonyFototexnika
 
 
 @allure.description("Test buy smartphone 2023")
-def test_buy_smartphone_2023(set_up):
+def test_buy_smartphone_2023(set_up, data):
     options = Options()
     options.add_experimental_option('excludeSwitches', ['enable-logging'])  # от лишних сообщений в терминале
-    # options.add_argument('--headless')
     driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), chrome_options=options)
-    email = 'alexander.risk1996@gmail.com'
-    password = 'alexander.risk1996'
 
-    base = Base(driver)
+    email = data['email']
+    password = data['password']
 
     mp = MainPage(driver)
     mp.authorization(email, password)
@@ -45,4 +43,4 @@ def test_buy_smartphone_2023(set_up):
     name_and_price_finish = checkout_p.finish_buy_product_1()
     assert name_and_price_catalog == name_and_price_finish, 'name or price changed during order confirmation'
 
-    base.clean_cart()
+    cp.clean_cart()
