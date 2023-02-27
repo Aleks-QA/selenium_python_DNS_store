@@ -2,7 +2,6 @@ import time
 import datetime
 import pyautogui
 from random import randint
-from selenium.common import TimeoutException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By

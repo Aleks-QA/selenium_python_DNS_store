@@ -1,7 +1,6 @@
 import allure
 from selenium import webdriver
 from selenium.common import TimeoutException
-from base.base_class import Base
 from pages.cart_page import CartPage
 from pages.main_page import MainPage
 from webdriver_manager.chrome import ChromeDriverManager

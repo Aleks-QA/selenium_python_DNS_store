@@ -21,5 +21,3 @@ def test_clean_cart(set_up, data):
 
     cp = CartPage(driver)
     cp.clean_cart()
-
-    # assert name_and_price_catalog == name_and_price_finish, 'name or price changed during order confirmation'
