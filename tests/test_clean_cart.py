@@ -6,7 +6,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.chrome.options import Options
 
-# ДНС ПОДГРУЖАЕТ ИНФОРМАЦИЮ О НАЛИЧИИ ТОВАРА В КОРЗИНЕ НЕСТАБИЛЬНО, ТЕСТ НЕ АКТУАЛЕН
+# ДНС ПОДГРУЖАЕТ ИНФОРМАЦИЮ О НАЛИЧИИ ТОВАРА В КОРЗИНЕ НЕСТАБИЛЬНО, ТЕСТ НЕ АКТУАЛЕН, ПЕРЕНЕСЕН В СКОЗНОЙ ТЕСТ
 # @allure.description("Test clean cart")
 # def test_clean_cart(set_up, data):
 #     options = Options()
