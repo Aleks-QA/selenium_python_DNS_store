@@ -23,9 +23,10 @@ class CatalogTopSmartPage(Base):
     INPUT_MIN_PRICE = '//div[3]/div[1]/div[4]/div/div/div[1]/input'
     INPUT_MAX_PRICE = 'div.left-filters__list > div:nth-child(4) > div > div > div:nth-child(2) > input'
     MEMORY_DROP_DAWN = "//div[2]/div[1]/div/div[3]/div[1]/div[8]/a"
-    MEMORY_CHECKBOX_128 = '//div[1]/div/div[3]/div[1]/div[8]/div/div/div[2]/label[1]'
+    MEMORY_CHECKBOX_256 = '//div/div/div[2]/label[3]/span[contains(text(),"256 ГБ")]'
     RAM_DROP_DAWN = "//span[text()='Объем оперативной памяти']"
-    RAM_CHECKBOX_8 = '//div[1]/div[10]/div/div/div[2]/label[2]'
+    RAM_CHECKBOX_8 = '//div[10]/div/div/div[2]//span[contains(text(),"8 Гб")]'
+    # RAM_CHECKBOX_8 = '//div[1]/div[10]/div/div/div[2]/label[2]'
     WEIGHT_DROP_DAWN = "//span[text()='Вес (г)']"
     WEIGHT_CHECK_BOX_159 = "//div[17]/div[3]/div[1]/div[1]/div/div[3]/label[3]/span"
     APPLY_FILTERS = "//div[@class='filters-extended__buttons']/button[text()='Применить']"
@@ -46,7 +47,7 @@ class CatalogTopSmartPage(Base):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.MEMORY_DROP_DAWN)))
 
     def get_memory_checkbox_128(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.MEMORY_CHECKBOX_128)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.MEMORY_CHECKBOX_256)))
 
     def get_ram_drop_dawn(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.RAM_DROP_DAWN)))

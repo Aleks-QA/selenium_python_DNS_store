@@ -18,7 +18,7 @@ class CartPage(Base):
     # LOCATORS
 
     NAME_PRODUCT_1 = '//*[@id="cart-page-new"]/div[1]/div[2]//div[1]/div[3]/div/div[1]/a'  # //div[numder]/div/div[1]/div[1]/div[1]/div[3]/div/div[1]/a
-    PRICE_PRODUCT_1 = '//div/div/div/div[1]/div[1]/div[3]/div/div[1]/div[1]/span[2]'  # //div/div[number]/div/div[1]/div[1]/div[3]/div/div[1]/div[1]/span[2]]
+    TOTAL_PRICE = '//div[@class="summary-header__sum"]//span[@class="price__current"]'  # //div/div[number]/div/div[1]/div[1]/div[3]/div/div[1]/div[1]/span[2]]
     GO_TO_CHECKOUT = '//span[text()="Перейти к оформлению"]'
     DELITE_PRODUCT = '//p[text()="Удалить"]'
     DELITE_ALL = '//div[text()="Удалить выбранные"]'
@@ -30,7 +30,7 @@ class CartPage(Base):
         return WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located((By.XPATH, self.NAME_PRODUCT_1)))
 
     def get_price_product_1(self):
-        return WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located((By.XPATH, self.PRICE_PRODUCT_1)))
+        return WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located((By.XPATH, self.TOTAL_PRICE)))
 
     def get_go_to_checkout(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.GO_TO_CHECKOUT)))

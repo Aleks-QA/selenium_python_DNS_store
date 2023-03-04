@@ -87,11 +87,13 @@ class MainPage(Base):
             Logger.add_start_step(method='authorization')
             self.driver.get(self.url)
             self.driver.maximize_window()
+            time.sleep(0.5)
             self.get_current_url()
             self.enter_lk()
             self.enter_with_password()
             self.input_email(email)
             self.input_password(password)
+            time.sleep(0.5)
             self.enter_authorization()
             self.assert_url(self.url)
             user_name = self.get_text_invisibility_element_css(self.TEXT_USER_NAME)
@@ -113,13 +115,3 @@ class MainPage(Base):
             self.click_hover_top_category_smart()
             print('Клик на 2023 года')
             Logger.add_end_step(self.driver.current_url, method='select_category_hover_menu_smart_2023_main_page')
-
-    # def select_category_smartphones(self):
-    #     """Выбрать в каталоге смартфоны и фототехника"""
-    #     with allure.step('Select category smartphones'):
-    #         Logger.add_start_step(method='select_product_smartphones')
-    #         self.get_current_url()
-    #         self.click_category_smartphones()
-    #         print('Выбрали категорию смартфоны и фототехника')
-    #         Logger.add_end_step(self.driver.current_url, method='select_category_smartphones')
-
