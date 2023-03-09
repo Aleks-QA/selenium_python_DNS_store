@@ -93,7 +93,7 @@ class MainPage(Base):
             self.enter_with_password()
             self.input_email(email)
             self.input_password(password)
-            time.sleep(0.5)
+            time.sleep(2)
             self.enter_authorization()
             self.assert_url(self.url)
             user_name = self.get_text_invisibility_element_css(self.TEXT_USER_NAME)

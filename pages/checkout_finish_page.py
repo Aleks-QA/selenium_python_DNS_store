@@ -15,8 +15,10 @@ class CheckoutPage(Base):
 
     # LOCATORS
 
-    DROP_DAWN_PRODUCT = '//*[@id="checkout"]/div/div[1]/div/div/div[2]'
-    NAME_PRODUCT_1_FINISH = '//*[@id="checkout"]/div/div[1]//div[3]/div/div[1]/div[1]'
+    DROP_DAWN_PRODUCT = '//*[@id="checkout"]/div/div[1]/div[1]/div/div/div[2]/div'
+    # DROP_DAWN_PRODUCT = '//*[@id="checkout"]/div/div[1]/div/div/div[2]'
+    NAME_PRODUCT_1_FINISH = '//div/div/div[3]/div/div/div[@class="base-checkout-products-list__item-title_xXL"]'
+    # NAME_PRODUCT_1_FINISH = '//*[@id="checkout"]/div/div[1]//div[3]/div/div[1]/div[1]'
     PRICE_PRODUCT_FINISH = '//*[@id="checkout"]/div/div[1]//div[1]/div[2]/div[1]'
 
     # GETTERS
