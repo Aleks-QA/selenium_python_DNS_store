@@ -35,6 +35,16 @@ class Base():
         pyautogui.moveTo(randint(100, 500), randint(100, 500))
         pyautogui.moveTo(randint(100, 500), randint(100, 500))
 
+    def find_substring(self, substring, string):
+        """Поиск подстроки в строке"""
+        if substring in string:
+            rez = 0
+            print("Подстрока входит в строку!")
+        else:
+            rez = -1
+            print('Подстрока не входит в строку!')
+        assert rez == 0, 'substring not found'
+
     def get_text_invisibility_element_css(self, locator_css):
         """Получаем текст из невидимого элемента"""
         time.sleep(3)
