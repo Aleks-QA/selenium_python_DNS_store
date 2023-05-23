@@ -17,7 +17,11 @@ class MainPage(Base):
 
     # LOCATORS
 
-    BUTTON_ENTER_LK = '//div[@class="homepage__container"]//span[text()="Войти"]'
+    BUTTON_LOCATION_OK_FOOTER = '//div/*[@class="bottom-sheet__footer"]//span[contains(text(), "Всё верно")]'
+    BUTTON_LOCATION_OK = '//span[contains(text(), "Всё верно")]'
+    # BUTTON_ENTER_LK = '//div[@class="homepage__container"]//span[text()="Войти"]'
+    LOGIN_ICON_LK = '//div[text()="Войти"]'
+    BUTTON_ENTER_LK = '//span[text()="Войти"]'
     BUTTON_ENTER_WITH_PASSWORD = '//div[text()="Войти с паролем"]'
     INPUT_EMAIL = '[autocomplete="username"]'
     INPUT_PASSWORD = '[autocomplete="current-password"]'
@@ -31,35 +35,46 @@ class MainPage(Base):
 
     # GETTERS
 
-    def get_enter_lk(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.BUTTON_ENTER_LK)))
+    def get_button_location_ok(self):
+        return WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.XPATH, self.BUTTON_LOCATION_OK)))
+
+    def get_icon_lk(self):
+        return WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, self.LOGIN_ICON_LK)))
+
+    def get_button_lk(self):
+        return WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, self.BUTTON_ENTER_LK)))
 
     def get_enter_with_password(self):
-        return WebDriverWait(self.driver, 30).until(
+        return WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.BUTTON_ENTER_WITH_PASSWORD)))
 
     def get_input_email(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.INPUT_EMAIL)))
+        return WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.INPUT_EMAIL)))
 
     def get_input_password(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.INPUT_PASSWORD)))
+        return WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.INPUT_PASSWORD)))
 
     def get_enter_authorization(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.BUTTON_AUTHORIZATION)))
-
+        return WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, self.BUTTON_AUTHORIZATION)))
 
     def get_hover_top_category_smart(self):
-        return WebDriverWait(self.driver, 30).until(
+        return WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.HOVER_TOP_CATEGORY_SMART)))
 
     def get_category_smartphones(self):
-        return WebDriverWait(self.driver, 30).until(
+        return WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.MENU_SMARTPHONES)))
 
     # ACTIONS
 
+    def click_button_location_ok(self):
+        self.get_button_location_ok().click()
+
     def enter_lk(self):
-        self.get_enter_lk().click()
+        self.get_icon_lk().click()
+
+    def click_lk(self):
+        self.get_button_lk().click()
 
     def enter_with_password(self):
         self.get_enter_with_password().click()
@@ -89,7 +104,10 @@ class MainPage(Base):
             self.driver.maximize_window()
             time.sleep(0.5)
             self.get_current_url()
-            self.enter_lk()
+            self.click_button_location_ok()
+            self.place_the_cursor_xpath(self.LOGIN_ICON_LK)
+            # self.enter_lk()
+            self.click_lk()
             self.enter_with_password()
             self.input_email(email)
             self.input_password(password)
