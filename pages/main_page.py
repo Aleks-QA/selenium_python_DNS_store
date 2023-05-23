@@ -38,8 +38,8 @@ class MainPage(Base):
     def get_button_location_ok(self):
         return WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.XPATH, self.BUTTON_LOCATION_OK)))
 
-    def get_icon_lk(self):
-        return WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, self.LOGIN_ICON_LK)))
+    # def get_icon_lk(self):
+    #     return WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.XPATH, self.LOGIN_ICON_LK)))
 
     def get_button_lk(self):
         return WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, self.BUTTON_ENTER_LK)))
@@ -70,8 +70,8 @@ class MainPage(Base):
     def click_button_location_ok(self):
         self.get_button_location_ok().click()
 
-    def enter_lk(self):
-        self.get_icon_lk().click()
+    # def enter_lk(self):
+    #     self.get_icon_lk().click()
 
     def click_lk(self):
         self.get_button_lk().click()
@@ -106,6 +106,7 @@ class MainPage(Base):
             self.get_current_url()
             self.click_button_location_ok()
             self.place_the_cursor_xpath(self.LOGIN_ICON_LK)
+            time.sleep(0.5)
             # self.enter_lk()
             self.click_lk()
             self.enter_with_password()
