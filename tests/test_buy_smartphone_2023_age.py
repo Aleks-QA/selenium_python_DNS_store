@@ -14,17 +14,19 @@ from pages.smartfony_i_fototexnika_page import SmartfonyFototexnika
 
 @allure.description("Test buy smartphone 2023")
 def test_buy_smartphone_2023(set_up, data):
-    # CHROME
+    """CHROME"""
     options = Options()
     options.add_experimental_option('excludeSwitches', ['enable-logging'])  # от лишних сообщений в терминале
     driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), chrome_options=options)
 
-    # FIREFOX
+    """FIREFOX"""
     # option = webdriver.FirefoxOptions()
     # option.set_preference("dom.webdriver.enabled", False)  #убирает флажок что автоматизированное ПО управляет браузером
-    # option.set_preference("general.useragent.override", "user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
-    #                                                     "(KHTML, like Gecko) Chrome/51.0.2704.103"
-    #                                                     " Safari/537.36")  # подмена user-agent
+    # # option.set_preference("general.useragent.override", "user-agent=Mozilla/5.0 (X11; Linux x86_64)"
+    # #                                                     " AppleWebKit/537.36 "
+    # #                                                     "(KHTML, like Gecko)"
+    # #                                                     " Chrome/51.0.2704.103"
+    # #                                                     " Safari/537.36")  # подмена user-agent
     # driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(), options=option)
 
     email = data['email']
