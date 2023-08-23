@@ -30,9 +30,7 @@
     
   <li>Установить все зависимости: <br>
   <code>python -m pip install -r requirements.txt</code> 
-    
-  <li>Отключить антивирус, так как ему может не понравиться отлов запросов через библиотеку selenium-wire</li>
-  
+      
   <li>Запустить тесты командой:<br><code>python -s -m pytest --alluredir=test_results</code> </li>
   
   <li>Открыть отчет о прохождении тестов командой:<br>
